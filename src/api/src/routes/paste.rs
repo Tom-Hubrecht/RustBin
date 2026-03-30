@@ -7,11 +7,10 @@ use utoipa_axum::{router::OpenApiRouter, routes};
 
 use crate::AppState;
 
-pub fn router() -> OpenApiRouter<AppState> {
+pub fn router(max_body_size: usize) -> OpenApiRouter<AppState> {
     OpenApiRouter::new()
         .routes(routes!(crate::handlers::paste::create))
-        // increase the limit for uploads to 16MB
-        .layer(DefaultBodyLimit::max(1024 * 1024 * 16))
+        .layer(DefaultBodyLimit::max(max_body_size))
         .routes(routes!(
             crate::handlers::paste::read,
             crate::handlers::paste::delete,

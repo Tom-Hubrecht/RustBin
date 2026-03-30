@@ -24,8 +24,11 @@ struct Args {
     #[clap(flatten)]
     listener: tokio_listener::ListenerAddressPositional,
 
-    #[clap(long, default_value = "sqlite::memory:")]
-    db_url: String,
+    #[clap(long, env = "RUSTBIN_DB_URI", default_value = "sqlite::memory:")]
+    db_uri: String,
+
+    #[clap(long, env = "RUSTBIN_MAX_BODY_SIZE", default_value = "16777216")]
+    max_body_size: usize,
 }
 
 #[tokio::main(flavor = "current_thread")]
@@ -43,7 +46,7 @@ async fn main() -> Result<()> {
     info!("Server listening on {}", listener.local_addr()?);
 
     // Database setup
-    let mut opt = ConnectOptions::new(args.db_url);
+    let mut opt = ConnectOptions::new(args.db_uri);
     opt.sqlx_logging(false);
 
     let db = Database::connect(opt)
@@ -58,7 +61,7 @@ async fn main() -> Result<()> {
     let state = AppState { db };
 
     let (router, api) = OpenApiRouter::with_openapi(ApiDoc::openapi())
-        .nest("/api/v1/paste", paste_router())
+        .nest("/api/v1/paste", paste_router(args.max_body_size))
         .with_state(state)
         .split_for_parts();
 
