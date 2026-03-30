@@ -41,6 +41,9 @@ in
       inherit (self.input.nixpkgs) callPackage;
     in
     {
+      nixosModules.default = import ./modules/nixos;
+      nixosModule = self.output.nixosModules.default;
+
       overlays.default =
         final: _:
         loadFromDirectoryRecursive {
