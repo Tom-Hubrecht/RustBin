@@ -270,7 +270,7 @@ const Paste: PageComponent = ({}) => {
               <Match when={state.decrypted}>
                 {(data) => {
                   const { content, format } = data();
-                  const paste = new Blob([content], {
+                  const paste = new Blob(["\ufeff", content], {
                     type: "text/plain",
                   });
                   const url = URL.createObjectURL(paste);
