@@ -1,0 +1,40 @@
+[package]
+authors = ["Tom Hubrecht"]
+name = "rustbin"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = { version = "0.8.8", features = ["macros"] }
+serde_json = "1.0.149"
+tokio = { version = "1.50.0", features = ["full"] }
+sea-orm = { version = "2.0.0-rc", features = [
+  "sqlx-postgres",
+  "sqlx-sqlite",
+  "runtime-tokio-native-tls",
+  "schema-sync",
+  "entity-registry",
+  "macros",
+  "with-json",
+  "with-time",
+  "with-uuid",
+] }
+tokio-listener = { version = "0.5.2", features = [
+  "user_facing_default",
+  "tokio-util",
+  "axum08",
+  "clap",
+] }
+clap = { version = "4.6.0", features = ["derive", "env"] }
+tracing = "0.1.44"
+tracing-subscriber = "0.3.23"
+utoipa = { version = "5.4.0", features = ["uuid", "axum_extras", "time", "chrono", "macros"] }
+utoipa-swagger-ui = { version = "9.0.2", features = ["axum", "vendored"] }
+utoipa-axum = "0.2.0"
+serde = { version = "1.0.228", features = ["derive"] }
+ts-rs = { version = "12.0.1", features = ["chrono-impl", "uuid-impl"] }
+uuid = { version = "1.23.0", features = ["rng-rand", "v4"] }
+chrono = "0.4.44"
+rand = { version = "0.10.0", features = ["thread_rng"] }
+anyhow = "1.0.102"
+tower-http = { version = "0.6.8", features = ["trace"] }

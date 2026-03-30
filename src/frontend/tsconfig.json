@@ -1,0 +1,24 @@
+// SPDX-FileCopyrightText: 2026 Tom Hubrecht <tom.hubrecht@mail.hubrecht.ovh>
+//
+// SPDX-License-Identifier: EUPL-1.2
+
+{
+  "compilerOptions": {
+    // General
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "target": "ESNext",
+    // Modules
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    // Type Checking & Safety
+    "strict": true,
+    "types": [
+      "vite/client"
+    ]
+  }
+}

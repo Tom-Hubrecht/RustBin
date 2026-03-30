@@ -1,0 +1,8 @@
+###
+# This file was automatically generated with nix-reuse.
+version = 1
+[[annotations]]
+SPDX-FileCopyrightText = "NONE"
+SPDX-License-Identifier = "CC0-1.0"
+path = [".envrc", ".gitignore", "src/api/.gitignore", "src/frontend/.gitignore", "src/api/Cargo.lock", "src/api/Cargo.toml", "src/frontend/package.json", "src/frontend/package-lock.json", "src/frontend/src/utils/api/types.d.ts", "src/frontend/src/bindings/Paste.ts", "nix/lon.lock"]
+precedence = "closest"

@@ -1,0 +1,157 @@
+// SPDX-FileCopyrightText: 2026 Tom Hubrecht <tom.hubrecht@mail.hubrecht.ovh>
+//
+// SPDX-License-Identifier: EUPL-1.2
+
+:root {
+  --bulma-family-primary: "Atkinson Hyperlegible Next";
+  --bulma-weight-extrabold: 600;
+
+  --bulma-primary-h: 14.81;
+  --bulma-primary-s: 75%;
+  --bulma-primary-l: 65%;
+
+  --bulma-success-h: 133;
+  --bulma-success-s: 76%;
+  --bulma-success-l: 75%;
+}
+
+body {
+  height: 100vh;
+}
+
+#root {
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  main {
+    flex-grow: 1;
+  }
+}
+
+.navbar-item.has-dropdown:not(.is-active) {
+  .navbar-dropdown {
+    display: none;
+  }
+}
+
+.navbar-item {
+  .icon-text {
+    flex-wrap: nowrap;
+  }
+}
+
+.file-name {
+  &:not(:last-child) {
+    --bulma-file-radius: 0;
+  }
+
+  .delete {
+    --bulma-delete-dimensions: 1.5rem;
+  }
+}
+
+.file-label ul {
+  display: flex;
+  overflow: hidden;
+}
+
+pre.numbered {
+  padding: 0;
+
+  code {
+    counter-reset: line-numbering;
+    display: block;
+    overflow-x: scroll;
+    min-width: max-content;
+
+    span {
+      &::before {
+        display: inline-block;
+        content: counter(line-numbering) ".";
+        counter-increment: line-numbering;
+        margin-right: 0.75em;
+        width: 2.5em;
+        text-align: right;
+        color: hsl(
+          var(--bulma-primary-h),
+          var(--bulma-primary-s),
+          var(--bulma-text-strong-l)
+        );
+      }
+
+      display: block;
+
+      &:nth-child(odd) {
+        background-color: hsl(from var(--bulma-pre-background) h s calc(l - 5));
+      }
+    }
+  }
+}
+
+pre code.hljs {
+  padding: 0;
+}
+
+#notifications {
+  position: fixed;
+  padding: 0.75em;
+  padding-bottom: 3em;
+  width: 100vw;
+
+  z-index: 10;
+
+  pointer-events: none;
+
+  .notification {
+    pointer-events: initial;
+  }
+
+  backdrop-filter: blur(3px);
+  mask: linear-gradient(to bottom, black calc(100% - 3em), transparent 100%);
+
+  &:empty {
+    display: none;
+  }
+}
+
+#qr-share {
+  path {
+    fill: hsl(var(--bulma-dark-h), var(--bulma-dark-s), var(--bulma-dark-l));
+  }
+
+  rect {
+    fill: hsl(var(--bulma-light-h), var(--bulma-light-s), var(--bulma-light-l));
+  }
+}
+
+.button.is-scheme {
+  --bulma-button-h: var(--bulma-light-h);
+  --bulma-button-s: var(--bulma-light-s);
+  --bulma-button-l: var(--bulma-light-l);
+  --bulma-button-background-l: var(--bulma-light-l);
+  --bulma-button-border-l: var(--bulma-light-l);
+  --bulma-button-border-width: 0px;
+  --bulma-button-color-l: var(--bulma-light-invert-l);
+  --bulma-button-outer-shadow-a: 0;
+
+  [data-theme="dark"] & {
+    --bulma-button-h: var(--bulma-dark-h);
+    --bulma-button-s: var(--bulma-dark-s);
+    --bulma-button-l: var(--bulma-dark-l);
+    --bulma-button-background-l: var(--bulma-dark-l);
+    --bulma-button-border-l: var(--bulma-dark-l);
+    --bulma-button-color-l: var(--bulma-dark-invert-l);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --bulma-button-h: var(--bulma-dark-h);
+    --bulma-button-s: var(--bulma-dark-s);
+    --bulma-button-l: var(--bulma-dark-l);
+    --bulma-button-background-l: var(--bulma-dark-l);
+    --bulma-button-border-l: var(--bulma-dark-l);
+    --bulma-button-color-l: var(--bulma-dark-invert-l);
+  }
+}

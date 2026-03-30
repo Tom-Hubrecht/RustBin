@@ -1,0 +1,63 @@
+{
+  "version": "1",
+  "sources": {
+    "git-hooks.nix": {
+      "type": "GitHub",
+      "fetchType": "tarball",
+      "owner": "cachix",
+      "repo": "git-hooks.nix",
+      "branch": "master",
+      "revision": "f799ae951fde0627157f40aec28dec27b22076d0",
+      "url": "https://github.com/cachix/git-hooks.nix/archive/f799ae951fde0627157f40aec28dec27b22076d0.tar.gz",
+      "hash": "sha256-EAtviqz0sEAxdHS4crqu7JGR5oI3BwaqG0mw7CmXkO8="
+    },
+    "nix-actions": {
+      "type": "Git",
+      "fetchType": "git",
+      "branch": "v1",
+      "revision": "23d4094f1791b88b4bf7d4b144619428182c6dfe",
+      "url": "https://git.afnix.fr/afnix/nix-actions",
+      "hash": "sha256-KWUAx9cQC0s1IWELfMckcDDuo8QikIsYn56b/JWsRXY=",
+      "lastModified": 1774460313,
+      "submodules": false
+    },
+    "nix-reuse": {
+      "type": "Git",
+      "fetchType": "git",
+      "branch": "main",
+      "revision": "8a56f80e31ed43b88a3737092bf63ad38cd05e9d",
+      "url": "https://git.afnix.fr/afnix/nix-reuse.git",
+      "hash": "sha256-/m/vqMPLYl9RrWVdDUJS6mcxyXY3KlvbPGR6EoVpyZY=",
+      "lastModified": 1772109729,
+      "submodules": false
+    },
+    "nix-util": {
+      "type": "Git",
+      "fetchType": "git",
+      "branch": "main",
+      "revision": "93c872ac783f014cc8bf27efa5a0804f97f9a63e",
+      "url": "https://gitlab.computer.surgery/charles/nix-util.git",
+      "hash": "sha256-vdAIIDfDBb7gHKEAIMYQp0aVxpRz0oykXWmQ22uM6WU=",
+      "lastModified": 1740863486,
+      "submodules": false
+    },
+    "nixpkgs": {
+      "type": "Tarball",
+      "fetchType": "tarball",
+      "origin": "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.xz",
+      "revision": "2b772c21c564364cfb5ea92c930178f0400a645c",
+      "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.05pre969399.2b772c21c564/nixexprs.tar.xz?rev=2b772c21c564364cfb5ea92c930178f0400a645c&lastModified=1774422283",
+      "hash": "sha256-OxXKmorZT2QA42qvBrHpIYO55ZeJ/guOZ5NHaFzbiVE="
+    },
+    "sprinkles": {
+      "type": "Git",
+      "fetchType": "git",
+      "branch": "v1",
+      "revision": "64f8d9fbdb463f80ab14f1e9835a1078f1e2d5e1",
+      "url": "https://git.afnix.fr/sprinkles/sprinkles.git",
+      "hash": "sha256-qGodxaCLyEQNifSi/ciVMswHO+9Y/blx+VobZg6ytWI=",
+      "lastModified": 1766415640,
+      "submodules": false
+    }
+  }
+}
