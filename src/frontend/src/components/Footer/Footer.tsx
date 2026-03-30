@@ -14,10 +14,6 @@ const Footer = () => {
           </span>
           <span>Source Code</span>
         </a>
-
-        <a class="button is-primary" href="/mentions-legales">
-          <span>Mentions Légales</span>
-        </a>
       </div>
     </footer>
   );
