@@ -1,13 +1,10 @@
 // SPDX-FileCopyrightText: 2026 Tom Hubrecht <tom.hubrecht@mail.hubrecht.ovh>
 //
 // SPDX-License-Identifier: EUPL-1.2
-
 import { Route, Router } from "@solidjs/router";
-import { type Component, For } from "solid-js";
+import { type Component, For, createSignal, createEffect } from "solid-js";
 import { createStore, produce } from "solid-js/store";
 
-import Footer from "./components/Footer/Footer";
-import NavBar from "./components/NavBar/NavBar";
 import Notification from "./components/Notification/Notification";
 import { AppShowMethods } from "./constants";
 import Create from "./pages/Create";
@@ -34,7 +31,24 @@ const routes: [string, PageComponent][] = [
   ["/paste/:id", Paste],
 ];
 
+const navMenu = document.getElementById("navbar-menu")!;
+const navBurger = document.getElementById("navbar-burger")!;
+
 const App = () => {
+  const [showMenu, setShowMenu] = createSignal<boolean>(false);
+
+  navBurger.addEventListener("click", () => setShowMenu((b) => !b));
+
+  createEffect(() => {
+    if (showMenu()) {
+      navMenu.classList.add("is-active");
+      navBurger.classList.add("is-active");
+    } else {
+      navMenu.classList.remove("is-active");
+      navBurger.classList.remove("is-active");
+    }
+  });
+
   const [store, setStore] = createStore<Store>({
     notifications: {},
   });
@@ -74,8 +88,6 @@ const App = () => {
 
   return (
     <>
-      <NavBar />
-
       <div id="notifications">
         <For each={Object.entries(store.notifications).reverse()}>
           {([id, props]) => {
@@ -95,8 +107,6 @@ const App = () => {
           </For>
         </Router>
       </main>
-
-      <Footer />
     </>
   );
 };
