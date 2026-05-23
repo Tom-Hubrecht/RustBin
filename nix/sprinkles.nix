@@ -116,5 +116,14 @@ fix (self: {
 
     This function does not check if the Sprinkles conventions are followed.
   */
-  new = f: self.fixOverridableWith { type = "sprinkle"; } f;
+  new =
+    f:
+    self.fixOverridableWith {
+      type = "sprinkle";
+      follows =
+        rules:
+        self.fixOverridable (
+          self.fixWithOverride (_: prev: builtins.mapAttrs (name: value: prev.${name} // value) rules) f
+        );
+    } f;
 })

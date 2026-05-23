@@ -45,9 +45,7 @@
       };
     overlay = self.overlays.default;
 
-    packages = {
-      inherit (self.inputs.nixpkgs.extend self.overlay) dev rustbin;
-    };
+    packages = { inherit (self.inputs.nixpkgs.extend self.overlay) dev rustbin; };
     package = self.packages.rustbin;
 
     shells = loadFromDirectoryRecursive {
