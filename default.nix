@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: EUPL-1.2
 
-(import ./nix { }).output
+import ./nix

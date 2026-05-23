@@ -24,7 +24,7 @@ let
 
   meta = builtins.readFile (root + "/Cargo.toml") |> fromTOML;
 
-  root = sprinkle.output.root + "/src/api";
+  root = sprinkle.root + "/src/api";
 in
 
 rustPlatform.buildRustPackage {
@@ -35,7 +35,7 @@ rustPlatform.buildRustPackage {
   src = toSource {
     inherit root;
 
-    fileset = intersection (gitTracked sprinkle.output.root) (
+    fileset = intersection (gitTracked sprinkle.root) (
       unions (
         map (path: root + "/${path}") [
           "Cargo.lock"

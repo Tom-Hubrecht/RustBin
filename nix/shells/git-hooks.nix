@@ -5,11 +5,11 @@
 { sprinkle }:
 
 let
-  inherit (sprinkle.input.nixpkgs.lib) genAttrs recursiveUpdate;
+  inherit (sprinkle.inputs.nixpkgs.lib) genAttrs recursiveUpdate;
 in
 
-sprinkle.input.git-hooks.run {
-  src = sprinkle.output.root;
+sprinkle.inputs.git-hooks.run {
+  src = sprinkle.root;
 
   default_stages = [ "pre-push" ];
 
@@ -31,7 +31,7 @@ sprinkle.input.git-hooks.run {
       {
         clippy.settings.offline = false;
 
-        reuse = sprinkle.input.nix-reuse.gitHook { };
+        reuse = sprinkle.inputs.nix-reuse.gitHook { };
       };
 
   settings.rust.cargoManifestPath = "src/api/Cargo.toml";

@@ -2,72 +2,61 @@
 #
 # SPDX-License-Identifier: EUPL-1.2
 
-{
-  sprinkles ? null,
-}:
+(import ./sprinkles.nix).new (
+  self:
+  let
+    importSprinkleV1 =
+      name:
+      ((import (self.sources.${name} + "/nix") { sprinkles = import self.sources."sprinkles"; }).override
+        {
+          input = _: { inherit (self.inputs) nixpkgs; };
+        }
+      ).output;
 
-let
-  importSprinkle =
-    name:
-    ((import (source.${name} + "/nix") { }).override {
-      input = _: { inherit (input source) nixpkgs sprinkles; };
-    }).output;
+    inherit (self.inputs.nix-util.lib.filesystem) loadFromDirectoryRecursive;
+    inherit (self.inputs.nixpkgs) callPackage;
+  in
+  {
+    sources = import ./lon.nix;
 
-  source = import ./lon.nix;
-  input = source: {
-    git-hooks = import (source."git-hooks.nix" + "/nix") {
-      inherit (source) nixpkgs;
-      gitignore-nix-src = null;
-      system = builtins.currentSystem;
-    };
-
-    nix-actions = importSprinkle "nix-actions";
-    nix-reuse = importSprinkle "nix-reuse";
-    nix-util = importSprinkle "nix-util";
-
-    nixpkgs = import source."nixpkgs" { config.allowAliases = false; };
-
-    sprinkles = if sprinkles == null then import source."sprinkles" else sprinkles;
-  };
-in
-
-(input source).sprinkles.new {
-  inherit input source;
-
-  output =
-    self:
-    let
-      inherit (self.input.nix-util.lib.filesystem) loadFromDirectoryRecursive;
-      inherit (self.input.nixpkgs) callPackage;
-    in
-    {
-      nixosModules.default = import ./modules/nixos;
-      nixosModule = self.output.nixosModules.default;
-
-      overlays.default =
-        final: _:
-        loadFromDirectoryRecursive {
-          directory = ./packages;
-          loader = _: path: final.callPackage path { sprinkle = self; };
-          target = "package.nix";
-        };
-      overlay = self.output.overlays.default;
-
-      packages = {
-        inherit (self.input.nixpkgs.extend self.output.overlay) dev rustbin;
-      };
-      package = self.output.packages.rustbin;
-
-      shells = loadFromDirectoryRecursive {
-        directory = ./shells;
-        loader = _: path: callPackage path { sprinkle = self; };
+    inputs = {
+      git-hooks = import (self.sources."git-hooks.nix" + "/nix") {
+        inherit (self.sources) nixpkgs;
+        gitignore-nix-src = null;
+        system = builtins.currentSystem;
       };
 
-      workflows = { };
+      nix-actions = importSprinkleV1 "nix-actions";
+      nix-reuse = importSprinkleV1 "nix-reuse";
+      nix-util = importSprinkleV1 "nix-util";
 
-      # Utility exports
-      inherit self;
-
-      root = ../.;
+      nixpkgs = import self.sources."nixpkgs" { config.allowAliases = false; };
     };
-}
+
+    nixosModules.default = import ./modules/nixos;
+    nixosModule = self.nixosModules.default;
+
+    overlays.default =
+      final: _:
+      loadFromDirectoryRecursive {
+        directory = ./packages;
+        loader = _: path: final.callPackage path { sprinkle = self; };
+        target = "package.nix";
+      };
+    overlay = self.overlays.default;
+
+    packages = {
+      inherit (self.inputs.nixpkgs.extend self.overlay) dev rustbin;
+    };
+    package = self.packages.rustbin;
+
+    shells = loadFromDirectoryRecursive {
+      directory = ./shells;
+      loader = _: path: callPackage path { sprinkle = self; };
+    };
+
+    workflows = { };
+
+    root = ../.;
+  }
+)

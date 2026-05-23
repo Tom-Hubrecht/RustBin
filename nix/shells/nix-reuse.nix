@@ -4,7 +4,7 @@
 
 { sprinkle }:
 
-sprinkle.input.nix-reuse.run {
+sprinkle.inputs.nix-reuse.run {
   downloadLicenses = true;
 
   defaultCopyright = "Tom Hubrecht";

@@ -31,7 +31,7 @@ in
 mkShellNoCC {
   name = "rustbin.dev";
 
-  inputsFrom = with sprinkle.output.packages; [
+  inputsFrom = with sprinkle.packages; [
     rustbin
     rustbin.frontend
   ];
@@ -42,9 +42,9 @@ mkShellNoCC {
   ++ shell-parts.git-hooks.enabledPackages;
 
   env = {
-    LON_DIRECTORY = toString (sprinkle.output.root + "/nix");
+    LON_DIRECTORY = toString (sprinkle.root + "/nix");
     RUST_LOG = "debug";
-    TS_RS_EXPORT_DIR = toString (sprinkle.output.root + "/src/frontend/src/bindings");
+    TS_RS_EXPORT_DIR = toString (sprinkle.root + "/src/frontend/src/bindings");
   };
 
   shellHook = getHooks (attrValues shell-parts ++ [ { shellHook = "unset shellHook"; } ]);

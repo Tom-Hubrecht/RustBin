@@ -19,7 +19,7 @@ let
 
   meta = builtins.readFile (root + "/package.json") |> builtins.fromJSON;
 
-  root = sprinkle.output.root + "/src/frontend";
+  root = sprinkle.root + "/src/frontend";
 in
 
 buildNpmPackage {
@@ -29,7 +29,7 @@ buildNpmPackage {
   src = toSource {
     inherit root;
 
-    fileset = intersection (gitTracked sprinkle.output.root) (
+    fileset = intersection (gitTracked sprinkle.root) (
       unions (
         map (path: root + "/${path}") [
           "src"
@@ -50,7 +50,7 @@ buildNpmPackage {
   installPhase = "mv dist $out";
 
   meta = {
-    description = "Enter your availability to find a time that works for everyone";
+    description = "A modern, minimalist zero-knowledge pastebin";
     homepage = "https://github.com/Tom-Hubrecht/RustBin";
     license = lib.licenses.eupl12;
   };

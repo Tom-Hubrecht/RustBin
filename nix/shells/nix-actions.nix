@@ -4,10 +4,10 @@
 
 { sprinkle }:
 
-sprinkle.input.nix-actions.run {
-  src = sprinkle.output.root;
+sprinkle.inputs.nix-actions.run {
+  src = sprinkle.root;
 
-  inherit (sprinkle.output) workflows;
+  inherit (sprinkle) workflows;
 
   buildCheck = false;
   platform = "github";
