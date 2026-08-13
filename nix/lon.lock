@@ -7,56 +7,46 @@
       "owner": "cachix",
       "repo": "git-hooks.nix",
       "branch": "master",
-      "revision": "f799ae951fde0627157f40aec28dec27b22076d0",
-      "url": "https://github.com/cachix/git-hooks.nix/archive/f799ae951fde0627157f40aec28dec27b22076d0.tar.gz",
-      "hash": "sha256-EAtviqz0sEAxdHS4crqu7JGR5oI3BwaqG0mw7CmXkO8="
+      "revision": "43b3c1ab9d40fb1dbb008f451988a91e375825e9",
+      "url": "https://github.com/cachix/git-hooks.nix/archive/43b3c1ab9d40fb1dbb008f451988a91e375825e9.tar.gz",
+      "hash": "sha256-ReRHaLgr/uVqdD8afFSn+myXIfpHeOhP0yYe0TJqAA8="
     },
     "nix-actions": {
       "type": "Git",
       "fetchType": "git",
-      "branch": "v1",
-      "revision": "23d4094f1791b88b4bf7d4b144619428182c6dfe",
+      "branch": "sprinkles-v2",
+      "revision": "ee20e040ca3b79ec0f8a099b6a5a1ee43062cb23",
       "url": "https://git.afnix.fr/afnix/nix-actions",
-      "hash": "sha256-KWUAx9cQC0s1IWELfMckcDDuo8QikIsYn56b/JWsRXY=",
-      "lastModified": 1774460313,
+      "hash": "sha256-dwNsbixVRbxqw2dILtQixubWGTaheeC+MnCJVajr+iM=",
+      "lastModified": 1782830860,
       "submodules": false
     },
     "nix-reuse": {
       "type": "Git",
       "fetchType": "git",
-      "branch": "main",
-      "revision": "8a56f80e31ed43b88a3737092bf63ad38cd05e9d",
+      "branch": "sprinkles-v2",
+      "revision": "6ca1d9b61e481df51a0697c54917e0cb0fc8a0f3",
       "url": "https://git.afnix.fr/afnix/nix-reuse.git",
-      "hash": "sha256-/m/vqMPLYl9RrWVdDUJS6mcxyXY3KlvbPGR6EoVpyZY=",
-      "lastModified": 1772109729,
-      "submodules": false
-    },
-    "nix-util": {
-      "type": "Git",
-      "fetchType": "git",
-      "branch": "main",
-      "revision": "93c872ac783f014cc8bf27efa5a0804f97f9a63e",
-      "url": "https://gitlab.computer.surgery/charles/nix-util.git",
-      "hash": "sha256-vdAIIDfDBb7gHKEAIMYQp0aVxpRz0oykXWmQ22uM6WU=",
-      "lastModified": 1740863486,
+      "hash": "sha256-9TAvk5T3+d9cTxsGDWe+N1Gao9pp37qNyYqCLGUD98M=",
+      "lastModified": 1782828953,
       "submodules": false
     },
     "nixpkgs": {
       "type": "Tarball",
       "fetchType": "tarball",
       "origin": "https://channels.nixos.org/nixos-unstable-small/nixexprs.tar.xz",
-      "revision": "2b772c21c564364cfb5ea92c930178f0400a645c",
-      "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.05pre969399.2b772c21c564/nixexprs.tar.xz?rev=2b772c21c564364cfb5ea92c930178f0400a645c&lastModified=1774422283",
-      "hash": "sha256-OxXKmorZT2QA42qvBrHpIYO55ZeJ/guOZ5NHaFzbiVE="
+      "revision": "8f4f7ae8c3c8fddf517782b653903d11f89b5c87",
+      "url": "https://releases.nixos.org/nixos/unstable-small/nixos-26.11pre1053268.8f4f7ae8c3c8/nixexprs.tar.xz?rev=8f4f7ae8c3c8fddf517782b653903d11f89b5c87&lastModified=1786581322",
+      "hash": "sha256-sGBYdsRw0uTAH+tIA1v4DOA9lgfMw5as3lrc32ilS6E="
     },
     "sprinkles": {
       "type": "Git",
       "fetchType": "git",
       "branch": "v1",
-      "revision": "64f8d9fbdb463f80ab14f1e9835a1078f1e2d5e1",
+      "revision": "a81c85e678a839118ec764b5c91ae6a3b76dbef0",
       "url": "https://git.afnix.fr/sprinkles/sprinkles.git",
-      "hash": "sha256-qGodxaCLyEQNifSi/ciVMswHO+9Y/blx+VobZg6ytWI=",
-      "lastModified": 1766415640,
+      "hash": "sha256-xdcbZe8jyDFIOO2vmH2zR/XIv5JZBEitYDdQM/S6mfQ=",
+      "lastModified": 1776230271,
       "submodules": false
     }
   }
